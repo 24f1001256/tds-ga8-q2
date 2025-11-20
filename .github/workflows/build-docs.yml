@@ -1,0 +1,11 @@
+name: Build docs
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Export Slides to PDF
+        run: |
+          npm install -g @marp-team/marp-cli
+          marp slides.md --pdf --allow-local-files -o artifacts/slides.pdf
