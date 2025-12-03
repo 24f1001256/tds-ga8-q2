@@ -133,3 +133,85 @@ Use `assets/architecture-hero.jpg` in the same repo `assets/` folder.
 fetch('/api/v1/products/42')
   .then(r => r.json())
   .then(data => console.log('Product', data));
+
+Algorithmic complexity (math)
+
+We use a deduplication algorithm with expected complexity:
+
+Time complexity: 
+  
+𝑇
+(
+𝑛
+)
+=
+𝑂
+(
+𝑛
+log
+⁡
+𝑛
+)
+Time complexity: T(n)=O(nlogn)
+
+For streaming deduplication using a hash + small-heap window:
+
+Space complexity: 
+  
+𝑆
+(
+𝑛
+)
+=
+𝑂
+(
+𝑘
+)
+(where 
+𝑘
+ is window size)
+Space complexity: S(n)=O(k)(where k is window size)
+Adjust max.inflight.requests to match I/O concurrency <span class="fragment">— prevents head-of-line blocking</span>
+
+Slide with fragments (animated reveals)
+
+First point <span class="fragment">— reveal 1</span>
+
+Second point <span class="fragment">— reveal 2</span>
+
+Final point <span class="fragment">— reveal 3</span>
+
+Speaker notes
+
+Notes are included under each slide body using the .speaker-note style.
+
+Speaker guidance: walk through the architecture diagram, emphasize reliability SLAs and monitoring hooks.
+Assets & structure (suggested)
+/ (repo root)
+├─ slides.md                # this file
+├─ assets/
+│  ├─ architecture-hero.jpg
+│  └─ logo.png
+└─ README.md
+
+Exporting & CI
+
+Use Marp CLI to convert to PDF/HTML:
+
+npx @marp-team/marp-cli slides.md -o slides.pdf
+
+npx @marp-team/marp-cli slides.md -o slides.html
+
+Add a GitHub Actions workflow to run Marp on push and attach artifacts for releases.
+
+Thank you
+
+Questions? Reach me at <span class="email">24f1001256@ds.study.iitm.ac.in</span>
+
+---
+
+### Notes & tips
+- Put the background image at `assets/architecture-hero.jpg` in the same repo so the relative link works.
+- The top front-matter `paginate: true` enables page numbers when rendered by Marp.
+- The `<style>` block defines a lightweight custom theme — you can put this CSS into a separate `.css` theme file and set `theme: /path/to/custom.css` if you prefer.
+- To produce the raw GitHub URL use the pattern:
