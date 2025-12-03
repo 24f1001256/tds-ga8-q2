@@ -1,79 +1,135 @@
 ---
 marp: true
-theme: default
+theme: custom
 paginate: true
-size: 16:9
-incremental: true
-backgroundColor: "#ffffff"
-style: |
-  /* === Custom theme overrides === */
-  section {
-    font-family: Inter, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    color: #222;
-  }
-
-  h1 {
-    color: #0b74de;
-    letter-spacing: -0.5px;
-  }
-
-  .fixed-footer {
-    position: fixed;
-    right: 20px;
-    bottom: 12px;
-    font-size: 0.85rem;
-    opacity: 0.85;
-  }
-
-  .meta {
-    font-size: 0.9rem;
-    opacity: 0.9;
-  }
-
-  .bg-overlay {
-    background-color: rgba(0,0,0,0.35);
-    color: #fff;
-    padding: 1rem 1.2rem;
-    border-radius: 8px;
-    display: inline-block;
-  }
-
-  .card {
-    padding: 1.2rem;
-    border-radius: 8px;
-    background: #ffffffdd;
-    box-shadow: 0 6px 18px rgba(11,18,35,0.08);
-  }
+class: lead
 ---
 
-<div class="fixed-footer">
-  <span class="meta">Doc owner: <strong>24f1001256@ds.study.iitm.ac.in</strong></span>
-</div>
+<!--
+  Marp presentation: Product documentation
+  Author contact: 24f1001256@ds.study.iitm.ac.in
+  Notes:
+    - Custom CSS theme is embedded below.
+    - Page numbers enabled via `paginate: true`.
+-->
 
-# Product Documentation — Core SDK  
-**Version-controlled technical documentation with Marp**
+<style>
+/* === Custom theme overrides for Marp ===
+   This block defines a simple, maintainable theme.
+   Adjust colors, fonts, spacing to match corporate brand.
+*/
+:root {
+  --brand-primary: #0b5fff;
+  --brand-accent: #00a676;
+  --text-color: #1f2937;
+  --muted: #6b7280;
+  --bg: #ffffff;
+  --code-bg: rgba(11, 95, 255, 0.06);
+}
+
+section {
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  color: var(--text-color);
+  background: var(--bg);
+  padding: 36px;
+}
+
+/* Title styling */
+h1 {
+  color: var(--brand-primary);
+  font-size: 48px;
+  margin-bottom: 4px;
+}
+h2 { color: var(--brand-primary); }
+
+/* Email badge */
+.email {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: rgba(11,95,255,0.08);
+  color: var(--brand-primary);
+  font-weight: 600;
+  font-size: 0.95em;
+}
+
+/* Code block styling */
+pre {
+  background: var(--code-bg);
+  border-radius: 8px;
+  padding: 14px;
+  overflow: auto;
+}
+
+/* Page number small tweak (Marp's paginate: true will add numbers; this adjusts appearance) */
+@media print, screen {
+  footer.marp-footer {
+    color: var(--muted);
+    font-size: 0.8em;
+  }
+}
+
+/* Small note style for speaker guidance */
+.speaker-note {
+  font-size: 0.85em;
+  color: var(--muted);
+}
+
+/* Fragment emphasis (works with Marp fragments) */
+.reveal .fragment {
+  transition: transform 300ms ease, opacity 300ms ease;
+}
+</style>
 
 ---
 
-## Why Marp + Git?
-
-- Diffable markdown — easy PR reviews  
-- Consistent slide output (HTML/PDF)  
-- Works with CI workflows  
-- Single-source documentation  
+# Product Documentation — Release 1.4
+**Marp** presentation for maintainable product docs  
+Contact: <span class="email">24f1001256@ds.study.iitm.ac.in</span>
 
 ---
 
-<!-- _background: "https://images.unsplash.com/photo-1508780709619-79562169bc64?w=1600&q=80" -->
-# Visual Overview
+<!-- backgroundImage: url('assets/architecture-hero.jpg') -->
+<!-- background-size: cover -->
+<!-- background-position: center -->
 
-<div class="bg-overlay">
-  High-level architecture diagram and major components.
-</div>
+# System Overview
+This slide uses a **background image** (see directive above).  
+Use `assets/architecture-hero.jpg` in the same repo `assets/` folder.
 
 ---
 
-## Installation
+## Table of contents
+1. Product overview
+2. Architecture & diagrams
+3. API examples
+4. Performance & complexity
+5. FAQs
 
-```bash
-npm install @our-company/sdk --save
+---
+
+## Product overview (Markdown slide)
+
+- **Name:** Acme Core Engine  
+- **Version:** 1.4.0 <span class="fragment">(LTS)</span>  
+- **Primary goal:** Reliable, low-latency processing of transaction streams.  
+- **Contact:** <span class="email">24f1001256@ds.study.iitm.ac.in</span>
+
+> This slide is written in **Markdown** and supports Marp directives and fragments.
+
+---
+
+## Architecture — Key Components
+- Ingest pipeline <span class="fragment">(Kafka)</span>
+- Stream processor <span class="fragment">(Flink)</span>
+- Storage <span class="fragment">(Postgres + S3)</span>
+
+---
+
+## Code sample — Example API usage
+
+```javascript
+// GET product details
+fetch('/api/v1/products/42')
+  .then(r => r.json())
+  .then(data => console.log('Product', data));
